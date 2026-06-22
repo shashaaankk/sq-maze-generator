@@ -20,6 +20,7 @@ Because any two cells have exactly one connecting path, the entrance and exit ca
 
 - **Random** — any two distinct cells.
 - **Furthest apart** — the two cells with the longest path between them (the maze diameter), found with two breadth-first sweeps: BFS from any cell to the most distant cell `A`, then BFS from `A` to the most distant cell `B`.
+- **Manual** — click cells directly on the maze. First click sets the green entrance, the next sets the blue exit, then it repeats; a hint shows which one the next click sets.
 
 ## Input
 
@@ -28,13 +29,15 @@ Node count must be a **perfect square** so the grid is `k × k` (e.g. `25 -> 5 �
 ## Usage
 
 ```bash
-pip install PyQt6
-python maze_app.py
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python sq-maze-gen.py
 ```
 
 Controls:
 
-- **Nodes** — node count; turns green with the derived `k × k` grid when valid, red otherwise.
+- **Nodes** — node count; turns green with the derived `k × k` grid when valid, red otherwise. The maze redraws live as you change it.
 - **Use seed** — tick and pick a number for a reproducible maze; the seed used is shown next to the button.
-- **Endpoints** — `Random` or `Furthest apart`.
-- **Generate** — carve and draw. Green dot = entrance, blue dot = exit.
+- **Endpoints** — `Random`, `Furthest apart`, or `Manual` (click cells to place the entrance and exit).
+- **Generate** — carve and draw. Green dot = entrance, blue dot = exit. Standing walls are dark and thick; knocked-down walls are drawn as light, thin lines.
